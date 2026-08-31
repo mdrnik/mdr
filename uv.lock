@@ -1,0 +1,50 @@
+version = 1
+revision = 3
+requires-python = ">=3.14"
+
+[[package]]
+name = "click"
+version = "8.5.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/c7/0e/7fa0ef50764b67090eca4114772a2abf8b6148198475e54c660b97caeee6/click-8.5.0.tar.gz", hash = "sha256:ba0d2089de75ea0310e2dde03160e6ca10009947fb95a182f9b54021bb272e34", size = 382235, upload-time = "2026-08-26T13:33:14.56Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl", hash = "sha256:255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360", size = 125251, upload-time = "2026-08-26T13:33:12.928Z" },
+]
+
+[[package]]
+name = "click-shell"
+version = "2.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "click" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/9e/26/93dd93fb1714f64376989b9e809982fd64d5f26e666b6d55458066c40b53/click-shell-2.1.tar.gz", hash = "sha256:ce0c91faae284c41a39bec966f928791ad4a45763755445f1fe2041fd091aa37", size = 8421, upload-time = "2021-06-27T00:07:00.845Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/21/ce/d81dcb726c436bf3f77d0145e03bf364c189cc95e6551e797bc0511dcea0/click_shell-2.1-py2.py3-none-any.whl", hash = "sha256:2d971a2e50eb7ad387cf0ce79ba4b844e66e0580784e2efe2df58b50a2f047f0", size = 8582, upload-time = "2021-06-27T00:06:59.938Z" },
+]
+
+[[package]]
+name = "mdr"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "click" },
+    { name = "click-shell" },
+    { name = "pyreadline3", marker = "sys_platform == 'win32'" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "click", specifier = ">=8.5.0" },
+    { name = "click-shell", specifier = ">=2.1" },
+    { name = "pyreadline3", marker = "sys_platform == 'win32'", specifier = ">=3.5.6" },
+]
+
+[[package]]
+name = "pyreadline3"
+version = "3.5.6"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b6/6d/f94028646d7bbe6d9d873c47ee7c246f2d29129d253f0d96cb6fcab70733/pyreadline3-3.5.6.tar.gz", hash = "sha256:61e53218b99656091ddb077df9e71f25850e72e030b6183b39c9b7e6e4f4a9bf", size = 100368, upload-time = "2026-05-14T17:55:04.471Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f7/5e/35c856e186b74678c24927847ad9895a51f1bc02a0c6126477a6c6040064/pyreadline3-3.5.6-py3-none-any.whl", hash = "sha256:8449b734232e42a5dcd74048e39b60db2839a4c38cf3ae2bf7707d58b5389c0d", size = 85243, upload-time = "2026-05-14T17:55:03.262Z" },
+]
