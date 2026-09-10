@@ -20,5 +20,3 @@ git branch -d feat/feat-1
 git fetch 
 
 настроить доступ по ССХ
-=======
-# mdr project
