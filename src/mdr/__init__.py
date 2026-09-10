@@ -18,6 +18,25 @@ ROOT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, '..', '..'))
 # Строим путь к AMOD от корня проекта
 BASE_DIR = os.path.join(ROOT_DIR, 'AMOD', 'Equipment')
 
+@mdr.command(name='obs')
+def launch_obsidian():
+    """Открыть базу знаний Obsidian и очистить экран."""
+    # Путь к Obsidian (используем сырую строку r'' для путей Windows)
+    obsidian_path = r"C:\Users\User\AppData\Local\Programs\Obsidian\Obsidian.exe"
+    
+    if not os.path.exists(obsidian_path):
+        click.echo(f"Ошибка: Исполняемый файл Obsidian не найден по пути {obsidian_path}")
+        return
+
+    try:
+        # Popen запускает процесс в фоне отдельно от консоли, 
+        # аналогично знаку `&` в Linux или `Start-Process` в PowerShell
+        subprocess.Popen([obsidian_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        
+        # Очищаем экран консоли аналогично `clear`
+        click.clear()
+    except Exception as e:
+        click.echo(f"Не удалось запустить Obsidian: {e}")
 
 # # Включаем запуск группы без обязательного указания подкоманды
 @mdr.group(name='cat', invoke_without_command=True)
