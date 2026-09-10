@@ -9,8 +9,15 @@ def mdr():
     """Главная оболочка приложения."""
     pass
 
-# Базовый путь выносим в константу для удобства
-BASE_DIR = os.path.expanduser('~/projects/AMOD/Equipment')
+# Путь к папке, где лежит main.py (C:\Users\User\projects\mdr\src\mdr)
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Поднимаемся на 2 уровня вверх в корень проекта (C:\Users\User\projects\mdr)
+ROOT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, '..', '..'))
+
+# Строим путь к AMOD от корня проекта
+BASE_DIR = os.path.join(ROOT_DIR, 'AMOD', 'Equipment')
+
 
 # # Включаем запуск группы без обязательного указания подкоманды
 @mdr.group(name='cat', invoke_without_command=True)
