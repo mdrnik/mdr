@@ -3,6 +3,7 @@ name = "mdr"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
+<<<<<<< HEAD
 requires-python = ">=3.14"
 dependencies = [
     "click>=8.5.0",
@@ -16,3 +17,7 @@ mdr = "mdr:mdr"
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
 build-backend = "uv_build"
+=======
+requires-python = ">=3.14.5"
+dependencies = []
+>>>>>>> e93d41354916b6b43764381a6befaae00a77e9f7
