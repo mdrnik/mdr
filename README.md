@@ -1,22 +1,26 @@
 # mdr 
-# Консольная программа для работы с каталогом техники Коматсу
+Консольная программа для работы с каталогом техники Коматсу.
+Для работы с файлами с расширением .md используется программы obsidian.
 
-git clone https://github.com
-git add .
-git commit -m "Message"
-git push -u origin main
+# Установка программы
+Скачиваем по ссылке с гитхаба
+```
+https://github.com/mdrnik/mdr.git
+```
+или если есть доступ по ssh
+```
+git clone git.github.com:mdrnik/mdr.git
+```
 
+Установка с помощью менеджера пакетов uv
+```
+uv tool install . 
+```
 
-git switch -c feat/feat-1
-git add .
-git commit -m "Message"
+Запуск программы с помошью ps:
+```
+mdr
+```
 
-git switch main
-git pull origin main
-git merge feat/feat-1
-git push origin main
-git branch -d feat/feat-1
-
-git fetch 
-
-настроить доступ по ССХ
+После запуска откроется консоль для ввода комманд.
+Для открытия папаок использовать комманды с номером техники. Для доступа к списку техники набрать `list`
