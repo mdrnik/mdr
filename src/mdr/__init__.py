@@ -2,6 +2,7 @@ import os
 import platform
 import subprocess
 import click
+from pathlib import Path
 from click_shell import shell
 
 @shell(prompt='mdr > ', intro='Добро пожаловать!')
@@ -17,6 +18,9 @@ ROOT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, '..', '..'))
 
 # Строим путь к AMOD от корня проекта
 BASE_DIR = os.path.join(ROOT_DIR, 'AMOD', 'Equipment')
+
+# CURRENT_DIR = Path(__file__).resolve().parent
+
 
 @mdr.command(name='obs')
 def launch_obsidian():

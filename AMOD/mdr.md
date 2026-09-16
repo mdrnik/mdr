@@ -10,4 +10,3 @@ Show commads list:
 ```python
 $ mdr --list
 ```
-
