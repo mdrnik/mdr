@@ -11,6 +11,10 @@ wheels/
 
 # Extensions
 *.pdf
+*.png
+*.db
+*.ppt
+*.AVI
 
 # Catalogues
 AMOD/.obsidian/app.json
@@ -18,3 +22,4 @@ AMOD/.obsidian/appearance.json
 AMOD/.obsidian/core-plugins.json
 AMOD/.obsidian/workspace.json
 AMOD/.stfolder
+AMOD/.obsidian
