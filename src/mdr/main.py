@@ -1,4 +1,5 @@
 import os
+import time
 import platform
 import subprocess
 import click
@@ -17,9 +18,7 @@ CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, '..', '..'))
 
 # Строим путь к AMOD от корня проекта
-BASE_DIR = os.path.join(ROOT_DIR, 'AMOD', 'Equipment')
-
-# CURRENT_DIR = Path(__file__).resolve().parent
+BASE_DIR = os.path.join(ROOT_DIR, 'AMOD', 'EQUIPMENT')
 
 
 @mdr.command(name='obs')
@@ -33,8 +32,6 @@ def launch_obsidian():
         return
 
     try:
-        # Popen запускает процесс в фоне отдельно от консоли, 
-        # аналогично знаку `&` в Linux или `Start-Process` в PowerShell
         subprocess.Popen([obsidian_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         
         # Очищаем экран консоли аналогично `clear`
@@ -42,16 +39,67 @@ def launch_obsidian():
     except Exception as e:
         click.echo(f"Не удалось запустить Obsidian: {e}")
 
+
+@mdr.command(name='sync')
+def launch_syncthing():
+    """Запустить Syncthing в фоне и открыть веб-интерфейс в Chrome."""
+    syncthing_path = "syncthing"  # Предполагается, что он добавлен в PATH. Если нет, укажите полный путь r"C:\..."
+    chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+    url = "http://localhost:8384"
+
+    try:
+        # 1. Запуск Syncthing в фоне без консольного окна и браузера
+        subprocess.Popen(
+            [syncthing_path, "--no-browser"], 
+            stdout=subprocess.DEVNULL, 
+            stderr=subprocess.DEVNULL,
+            creationflags=subprocess.CREATE_NO_WINDOW  # Скрывает окно консоли Syncthing на Windows
+        )
+        
+        # 2. Небольшая пауза, чтобы сервис успел подняться
+        time.sleep(1)
+        
+        # 3. Открытие Chrome в режиме инкогнито
+        subprocess.Popen(
+            [chrome_path, "--incognito", url], 
+            stdout=subprocess.DEVNULL, 
+            stderr=subprocess.DEVNULL
+        )
+        
+        click.echo("Syncthing запущен. Интерфейс открыт в Chrome.")
+        click.clear()
+        
+    except FileNotFoundError as e:
+        click.echo(f"Ошибка: Проверьте правильность путей к программам. {e}")
+    except Exception as e:
+        click.echo(f"Не удалось запустить Syncthing: {e}")
+
+@mdr.command(name='gem')
+def launch_gemini():
+    """Открыть Gemini в режиме инкогнито и очистить экран."""
+    # Стандартный путь к Google Chrome на Windows
+    chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+    gemini_url = "https://google.com"
+    
+    if not os.path.exists(chrome_path):
+        click.echo(f"Ошибка: Исполняемый файл Chrome не найден по пути {chrome_path}")
+        return
+
+    try:
+        # Запускаем Chrome с флагом инкогнито и ссылкой
+        subprocess.Popen([chrome_path, "-incognito", gemini_url], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        
+        # Очищаем экран консоли
+        click.clear()
+    except Exception as e:
+        click.echo(f"Не удалось запустить Chrome: {e}")
+
+
+
 # # Включаем запуск группы без обязательного указания подкоманды
 @mdr.group(name='cat', invoke_without_command=True)
 def cat():
     pass
-# @click.pass_context
-# def cat(ctx):
-#     """Управление каталогом оборудования (open, add)."""
-#     # Если пользователь ввел просто "cat", перенаправляем его на команду "open" без ID
-#     if ctx.invoked_subcommand is None:
-#         ctx.invoke(cat_open, folder_id='')
 
 # Подкоманда OPEN
 @cat.command(name='open')

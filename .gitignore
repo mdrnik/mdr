@@ -15,6 +15,29 @@ wheels/
 *.db
 *.ppt
 *.AVI
+*.mp4
+*.jpg
+*.MOV
+*.m4a
+*.conf
+*.pptx
+*.xlsx
+*.xls
+*.rar
+*.lnk
+*.zip
+*.djvu
+*.INF
+*.dxr
+*.exe
+*.jbf
+*.BUP
+*.VOB
+*.IFO
+*.docx
+*.DS_Store
+
+
 
 # Catalogues
 AMOD/.obsidian/app.json
@@ -23,3 +46,4 @@ AMOD/.obsidian/core-plugins.json
 AMOD/.obsidian/workspace.json
 AMOD/.stfolder
 AMOD/.obsidian
+AMOD/
