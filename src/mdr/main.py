@@ -95,10 +95,10 @@ def launch_syncthing():
 def launch_gemini():
     """Открыть Gemini в режиме инкогнито и очистить экран."""
     # Стандартный путь к Google Chrome на Windows
-    gemini_url = "https://gemini.google.com"
+    gemini_url = "https://www.google.com/?hl=ru"
     
     if not CHROME_PATH.exists():
-        click.echo(f"Ошибка: Исполняемый файл Chrome не найден по пути {chrome_path}")
+        click.echo(f"Ошибка: Исполняемый файл Chrome не найден по пути {CHROME_PATH}")
         return
 
     try:
