@@ -18,7 +18,7 @@ def _open_in_explorer(target_path: Path):
         subprocess.run(["xdg-open", target_path], check=True)
 
 @shell(prompt='mdr > ', intro='Welcome!\n(Наберите help для вывода доступных комманд, exit дл выхода из программы.)')
-def mdr():
+def cli():
     """Главная оболочка приложения."""
     pass
 
@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parents[2] / 'AMOD' / 'EQUIPMENT'
 CHROME_PATH = Path("C:/Program Files/Google/Chrome/Application/chrome.exe")
 
 
-@mdr.command(name='obs')
+@cli.command(name='obs')
 def launch_obsidian():
     """Открыть базу знаний Obsidian и очистить экран."""
     # Путь к Obsidian (используем сырую строку r'' для путей Windows)
@@ -46,7 +46,7 @@ def launch_obsidian():
         click.echo(f"Не удалось запустить Obsidian: {e}")
 
 
-@mdr.command(name='sync')
+@cli.command(name='sync')
 def launch_syncthing():
     """Запустить Syncthing в фоне и открыть веб-интерфейс в Chrome."""
     syncthing_name = "syncthing"
@@ -91,7 +91,7 @@ def launch_syncthing():
     except Exception as e:
         click.echo(f"Не удалось запустить Syncthing: {e}")
 
-@mdr.command(name='gem')
+@cli.command(name='gem')
 def launch_gemini():
     """Открыть Gemini в режиме инкогнито и очистить экран."""
     # Стандартный путь к Google Chrome на Windows
@@ -113,7 +113,7 @@ def launch_gemini():
 
 
 # # Включаем запуск группы без обязательного указания подкоманды
-@mdr.group(name='cat', invoke_without_command=True)
+@cli.group(name='cat', invoke_without_command=True)
 def cat():
     pass
 
@@ -160,6 +160,8 @@ def cat_add(folder_id):
     except Exception as e:
         click.echo(f"Ошибка при создании папки: {e}")
 
+def main():
+    cli()
 
 if __name__ == '__main__':
-    mdr()
+    main()
