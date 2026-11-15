@@ -41,13 +41,6 @@ wheels/
 
 
 # Catalogues
-AMOD/.obsidian/app.json
-AMOD/.obsidian/appearance.json
-AMOD/.obsidian/core-plugins.json
-AMOD/.obsidian/workspace.json
-AMOD/.stfolder
-AMOD/.obsidian
-AMOD
-AMOD/JOB
+AMOD/
 
 data/lg
