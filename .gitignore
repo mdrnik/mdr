@@ -36,6 +36,7 @@ wheels/
 *.IFO
 *.docx
 *.DS_Store
+*.md
 
 
 
@@ -46,4 +47,7 @@ AMOD/.obsidian/core-plugins.json
 AMOD/.obsidian/workspace.json
 AMOD/.stfolder
 AMOD/.obsidian
-AMOD/
+AMOD
+AMOD/JOB
+
+data/lg
