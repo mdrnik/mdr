@@ -111,6 +111,33 @@ def launch_gemini():
         click.echo(f"Не удалось запустить Chrome: {e}")
 
 
+@cli.command(name='calc')
+def launch_calc():
+    """Открыть Калькулятор Windows и очистить экран."""
+    try:
+        # Запускаем стандартный калькулятор Windows
+        subprocess.Popen(["calc.exe"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        
+        # Очищаем экран консоли
+        click.clear()
+    except Exception as e:
+        click.echo(f"Не удалось запустить калькулятор: {e}")
+
+
+@cli.command(name='notepad')
+@click.argument('filename', required=False)
+def launch_notepad(filename):
+    """Открыть Блокнот (опционально с указанным файлом) и очистить экран."""
+    try:
+        # Если имя файла передано, передаем его аргументом в notepad.exe
+        cmd = ["notepad.exe", filename] if filename else ["notepad.exe"]
+        
+        subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        click.clear()
+    except Exception as e:
+        click.echo(f"Не удалось запустить Блокнот: {e}")
+
+
 
 # # Включаем запуск группы без обязательного указания подкоманды
 @cli.group(name='cat', invoke_without_command=True)
